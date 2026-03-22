@@ -22,9 +22,12 @@ jobs:
         username: ubuntu 
         key: ${{ secrets.PRIVATE_SSH_KEY }}
         port: 22 
-        script: 
-          cd deploying-next-app
-          git pull
+        script: |
+          cd deploying-next-app || exit
+
+          git pull origin main
+
           npm i
           npm run build 
-          npm run dev 
+
+          pm2 restart nextjs-app || pm2 start npm --name "nextjs-app" -- start
