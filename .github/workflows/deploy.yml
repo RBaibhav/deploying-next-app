@@ -30,4 +30,4 @@ jobs:
           npm i
           npm run build 
 
-          pm2 restart nextjs-app || pm2 start npm --name "nextjs-app" -- start
+          pm2 restart next-app || pm2 start npm --name "next-app" -- start
